@@ -1,4 +1,13 @@
 locals {
+  # Base labels always present; user-supplied labels are merged on top.
+  base_labels = merge(
+    {
+      environment = var.environment
+      app         = var.app_name
+    },
+    var.labels
+  )
+
   # Thresholds loosen in non-prod to reduce noise.
   # prod = 1x, staging = 2x, dev = 5x
   env_factor = {

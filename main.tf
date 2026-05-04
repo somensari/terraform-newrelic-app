@@ -14,6 +14,7 @@ module "alerts" {
   app_name      = var.app_name
   environment   = var.environment
   active_alerts = local.active_alerts
+  labels        = local.base_labels
 }
 
 module "dashboards" {
@@ -23,6 +24,7 @@ module "dashboards" {
   app_name          = var.app_name
   environment       = var.environment
   active_dashboards = local.active_dashboards
+  labels            = local.base_labels
 }
 
 module "synthetics" {
@@ -30,6 +32,7 @@ module "synthetics" {
 
   account_id        = var.account_id
   active_synthetics = local.active_synthetics
+  labels            = local.base_labels
 }
 
 module "notifications" {

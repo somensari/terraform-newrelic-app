@@ -20,4 +20,12 @@ resource "newrelic_synthetics_monitor" "this" {
       values = ["CHROME_BROWSER:100"]
     }
   }
+
+  dynamic "tag" {
+    for_each = var.labels
+    content {
+      key    = tag.key
+      values = [tag.value]
+    }
+  }
 }

@@ -190,3 +190,17 @@ resource "newrelic_one_dashboard" "this" {
     }
   }
 }
+
+resource "newrelic_entity_tags" "dashboard" {
+  for_each = var.active_dashboards
+
+  guid = newrelic_one_dashboard.this[each.key].guid
+
+  dynamic "tag" {
+    for_each = var.labels
+    content {
+      key    = tag.key
+      values = [tag.value]
+    }
+  }
+}

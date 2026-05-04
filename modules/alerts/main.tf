@@ -44,3 +44,17 @@ resource "newrelic_nrql_alert_condition" "this" {
     }
   }
 }
+
+resource "newrelic_entity_tags" "alert_condition" {
+  for_each = var.active_alerts
+
+  guid = newrelic_nrql_alert_condition.this[each.key].entity_guid
+
+  dynamic "tag" {
+    for_each = var.labels
+    content {
+      key    = tag.key
+      values = [tag.value]
+    }
+  }
+}

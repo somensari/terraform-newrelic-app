@@ -113,6 +113,23 @@ variable "synthetics" {
   default = {}
 }
 
+# ─── Labels ───────────────────────────────────────────────────────────────────
+
+variable "labels" {
+  description = <<-EOT
+    Key-value labels applied to all resources (alerts, dashboards, synthetics).
+    environment and app are always added automatically.
+
+    Example:
+      labels = {
+        team       = "payments"
+        cost_center = "cc-1234"
+      }
+  EOT
+  type    = map(string)
+  default = {}
+}
+
 # ─── Notifications ────────────────────────────────────────────────────────────
 
 variable "notifications" {

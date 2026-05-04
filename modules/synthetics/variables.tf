@@ -11,3 +11,9 @@ variable "active_synthetics" {
     uri    = optional(string)
   }))
 }
+
+variable "labels" {
+  description = "Labels to apply to all synthetic monitors"
+  type        = map(string)
+  default     = {}
+}

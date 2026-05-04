@@ -22,3 +22,9 @@ variable "active_alerts" {
     warning_duration  = optional(number)
   }))
 }
+
+variable "labels" {
+  description = "Labels to apply to all alert conditions"
+  type        = map(string)
+  default     = {}
+}

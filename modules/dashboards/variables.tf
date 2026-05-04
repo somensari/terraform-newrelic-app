@@ -16,3 +16,9 @@ variable "active_dashboards" {
     name = string
   }))
 }
+
+variable "labels" {
+  description = "Labels to apply to all dashboards"
+  type        = map(string)
+  default     = {}
+}
